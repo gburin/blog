@@ -122,6 +122,15 @@
     
     <url>
     
+      <loc>/post/2015-07-28-ssh-tutorial/</loc>
+      <lastmod>2015-07-28T00:00:00-03:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/2015-07-23-r-rmarkdown/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
     </url>
@@ -219,6 +228,16 @@
     
     <url>
     
+      <loc>/tags/portuguese/</loc>
+      <lastmod>2015-07-28T00:00:00-03:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/project/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -269,8 +288,28 @@
     
     <url>
     
+      <loc>/tags/ssh/</loc>
+      <lastmod>2015-07-28T00:00:00-03:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/tutorial/</loc>
+      <lastmod>2015-07-28T00:00:00-03:00</lastmod>
       <priority>0</priority>
     </url>
     
