@@ -283,3 +283,7 @@ defaultContentLanguageInSubdir = false
 # Configure the English version of the website.
 [Languages.en]
   languageCode = "en-us"
+  
+# Setting permalink rules
+[permalinks]
+    post = "/:slug/"

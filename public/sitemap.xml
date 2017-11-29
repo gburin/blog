@@ -68,51 +68,6 @@
     
     <url>
     
-      <loc>/post/getting-started/</loc>
-      <lastmod>2017-09-03T00:00:00-03:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/post/widgets/</loc>
-      <lastmod>2016-04-19T00:00:00-03:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/post/managing-content/</loc>
-      <lastmod>2016-04-18T00:00:00-03:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/post/writing-markdown-latex/</loc>
-      <lastmod>2016-04-17T00:00:00-03:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/post/faq/</loc>
-      <lastmod>2016-04-10T00:00:00-03:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/publication/first_paper/</loc>
       <lastmod>2016-04-09T00:00:00+00:00</lastmod>
     </url>
@@ -122,26 +77,17 @@
     
     <url>
     
-      <loc>/post/2015-07-28-ssh-tutorial/</loc>
+      <loc>/tutorial-de-ggplot2/</loc>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tutorial-de-ssh/</loc>
       <lastmod>2015-07-28T00:00:00-03:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/post/2015-07-23-r-rmarkdown/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/post/migrate-from-jekyll/</loc>
-      <lastmod>2014-03-10T00:00:00-03:00</lastmod>
     </url>
     
   
@@ -188,6 +134,26 @@
     
     <url>
     
+      <loc>/tags/ggplot2/</loc>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/graphs/</loc>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/</loc>
       <lastmod>2017-10-14T23:00:00-03:00</lastmod>
       <priority>0</priority>
@@ -198,38 +164,8 @@
     
     <url>
     
-      <loc>/tags/hugo/</loc>
-      <lastmod>2017-09-03T00:00:00-03:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/jekyll/</loc>
-      <lastmod>2014-03-10T00:00:00-03:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/plot/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/portuguese/</loc>
-      <lastmod>2015-07-28T00:00:00-03:00</lastmod>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -259,27 +195,7 @@
     <url>
     
       <loc>/categories/r/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/r-markdown/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/regression/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -309,7 +225,17 @@
     <url>
     
       <loc>/tags/tutorial/</loc>
-      <lastmod>2015-07-28T00:00:00-03:00</lastmod>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/visualization/</loc>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
     
