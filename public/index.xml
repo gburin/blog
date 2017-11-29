@@ -57,346 +57,9 @@
     </item>
     
     <item>
-      <title>Tutorial de ggplot2</title>
-      <link>/tutorial-de-ggplot2/</link>
-      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
-      
-      <guid>/tutorial-de-ggplot2/</guid>
-      <description>&lt;p&gt;O pacote &lt;em&gt;ggplot2&lt;/em&gt; foi desenvolvido pelo Dr. Hadley Wickham (que desenvolveu diversos outros pacotes importantes para &lt;strong&gt;R&lt;/strong&gt; como o &lt;em&gt;(d)plyr&lt;/em&gt; por exemplo. Este pacote implementa uma nova maneira de criar gráficos a partir dos dados, trazendo o conceito de camadas (&lt;em&gt;layers&lt;/em&gt;) para a sintaxe do &lt;strong&gt;R&lt;/strong&gt;. Com esse novo conceito, surge também a necessidade de se organizar os dados de uma maneira que facilite a utilização da nova sintaxe. Para isso, os outros pacotes (como os já mencionados &lt;em&gt;(d)plyr&lt;/em&gt;) foram desenvolvidos pelo Dr. Wickham de maneira a tornar a manipulação de dados mais ágil, intuitiva e já adequada para o uso conjunto com &lt;em&gt;ggplot2&lt;/em&gt;.&lt;/p&gt;
-&lt;div id=&#34;instalacao&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Instalação&lt;/h2&gt;
-&lt;p&gt;O pacote deve ser instalado como qualquer outro pacote no &lt;strong&gt;R&lt;/strong&gt;:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;ggplot2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;É possível também instalar as versões mais recentes do pacote (mas que podem apresentar instabilidades ou serem incompletas) através da função &lt;em&gt;install_github&lt;/em&gt; do pacote &lt;strong&gt;devtools&lt;/strong&gt;. Este tipo de instalação usa os arquivos disponíveis no repositório público do &lt;em&gt;ggplot2&lt;/em&gt; no github.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;devtools&amp;quot;)
-library(devtools)
-install_github(&amp;quot;hadley/ggplot2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Após a instalação, carregue o pacote para utilização.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;como-organizar-os-dados-para-o-ggplot2&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Como organizar os dados para o &lt;em&gt;ggplot2&lt;/em&gt;&lt;/h1&gt;
-&lt;p&gt;É bastante comum usuários enfrentarem problemas nas primeiras vezes que usam o &lt;em&gt;ggplot2&lt;/em&gt; pois ao organizarem os dados para serem importados no &lt;strong&gt;R&lt;/strong&gt;, procuram o fazer da maneira mais sintética possivel, agrupando variáveis por exemplo. A tabela a seguir é um exemplo de como &lt;strong&gt;NÃO&lt;/strong&gt; se deve organizar os dados para serem usados com o &lt;em&gt;ggplot2&lt;/em&gt; (&lt;del&gt;para nenhuma situação na verdade&lt;/del&gt;).&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##            Tratamento     Valor
-## 1   Tratamento A - 2h 10.821762
-## 2   Tratamento A - 4h 10.306185
-## 3   Tratamento A - 8h 10.608959
-## 4  Tratamento A - 16h  9.023300
-## 5  Tratamento A - 24h  9.098674
-## 6   Tratamento B - 2h 10.875956
-## 7   Tratamento B - 4h  9.560360
-## 8   Tratamento B - 8h 10.117291
-## 9  Tratamento B - 16h 10.575051
-## 10 Tratamento B - 24h 10.787699&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Os objetos de entrada nas funções do &lt;em&gt;ggplot2&lt;/em&gt; são da classe &lt;em&gt;data.frame&lt;/em&gt;. No entanto, organizar o &lt;em&gt;data.frame&lt;/em&gt; de maneira a otimizar o trabalho poupa bastante tempo &lt;del&gt;e dor de cabeça&lt;/del&gt;. O &lt;em&gt;data.frame&lt;/em&gt; a ser usado em um trabalho deve idealmente conter cada uma das variáveis em colunas separadas, e cada observação em linhas separadas. Assim, o exemplo anterior deveria ser idealmente organizado da seguinte forma:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##        Valor Tempo   Tratamento
-## 1  10.821762     2 Tratamento A
-## 2  10.306185     4 Tratamento A
-## 3  10.608959     8 Tratamento A
-## 4   9.023300    16 Tratamento A
-## 5   9.098674    24 Tratamento A
-## 6  10.875956     2 Tratamento B
-## 7   9.560360     4 Tratamento B
-## 8  10.117291     8 Tratamento B
-## 9  10.575051    16 Tratamento B
-## 10 10.787699    24 Tratamento B&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Alguns pacotes foram desenvolvidos com o propósito de facilitar a organização dos dados de maneira limpa e otimizada. Dentre esses pacotes, encontram-se &lt;em&gt;(d)plyr&lt;/em&gt;, &lt;em&gt;tidyr&lt;/em&gt;, &lt;em&gt;magrittr&lt;/em&gt; dentre outros. Para mais informações sobre como (e porquê) organizar seus dados dessa forma, leia &lt;a href=&#34;http://www.jstatsoft.org/v59/i10/paper&#34;&gt;este artigo do Dr. Wickham&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;estrutura-basica-de-um-grafico&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Estrutura básica de um gráfico&lt;/h1&gt;
-&lt;p&gt;Como dito na introdução, um gráfico feito no &lt;em&gt;ggplot2&lt;/em&gt; consiste de diversas camadas que são adicionadas a uma estrutura básica. Essa estrutura básica é criada usando as funções &lt;em&gt;ggplot&lt;/em&gt; ou &lt;em&gt;qplot&lt;/em&gt;. Essas funções possuem dois componentes essenciais: &lt;em&gt;data&lt;/em&gt;, que como o nome diz recebe o &lt;em&gt;data.frame&lt;/em&gt; a ser utilizado para a construção do gráfico, e &lt;em&gt;mapping&lt;/em&gt;, que é o argumento que controla a estética do gráfico, ou seja, que controla quais variáveis serão plotadas nos eixos &lt;em&gt;x&lt;/em&gt; e &lt;em&gt;y&lt;/em&gt;, dentre outros detalhes que serão abordados posteriormente. Para o mapeamento dos dados, usaremos a função &lt;em&gt;aes&lt;/em&gt;, na qual indicaremos qual variável deve ser posicionada em cada eixo, além de outros argumentos relativos a cor, tamanho, etc.&lt;/p&gt;
-&lt;p&gt;Diogo Melo, do Laboratório de Evolução de Mamíferos do IB-USP sintetizou uma regra geral para gráficos no &lt;em&gt;ggplot2&lt;/em&gt;:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data_frame_entrada, aes(x = coluna_eixo_x,
-                               y = coluna_eixo_y,
-                               group = coluna_agrupadora,
-                               color = coluna_das_cores))
-+ geom_tipo_do_grafico(opções que não dependem dos dados,
-                       aes(opções que dependem))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Para exemplificar a construção de um gráfico, usaremos o conjunto de dados do próprio pacote &lt;em&gt;ggplot2&lt;/em&gt; chamado &lt;strong&gt;diamonds&lt;/strong&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data(diamonds)
-head(diamonds)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 10
-##   carat       cut color clarity depth table price     x     y     z
-##   &amp;lt;dbl&amp;gt;     &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt;   &amp;lt;ord&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
-## 1  0.23     Ideal     E     SI2  61.5    55   326  3.95  3.98  2.43
-## 2  0.21   Premium     E     SI1  59.8    61   326  3.89  3.84  2.31
-## 3  0.23      Good     E     VS1  56.9    65   327  4.05  4.07  2.31
-## 4  0.29   Premium     I     VS2  62.4    58   334  4.20  4.23  2.63
-## 5  0.31      Good     J     SI2  63.3    58   335  4.34  4.35  2.75
-## 6  0.24 Very Good     J    VVS2  62.8    57   336  3.94  3.96  2.48&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;graficos-unidimensionais-boxplots-e-histogramas&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Gráficos unidimensionais (boxplots e histogramas)&lt;/h2&gt;
-&lt;p&gt;Um bom modo de iniciar qualquer análise é fazendo uma análise exploratória dos dados. Para isso, alguns tipos específicos de gráficos como &lt;em&gt;boxplots&lt;/em&gt; ou histogramas são maneiras simples de visualizar a estrutura básica dos dados. Estes tipos de gráfico são ditos unidimensionais, pois representam apenas uma variável. Neste tópico, veremos como criar esses dois gráficos de maneira simples (complementos serão adicionados mais para frente no tutorial).&lt;/p&gt;
-&lt;p&gt;O primeiro passo para criarmos um gráfico é então gerar o objeto da classe &lt;strong&gt;ggplot&lt;/strong&gt;. &lt;strong&gt;DICA: armazene as camadas básicas do seu gráfico em um objeto, pois isso facilita a adição de novas camadas sem a necessidade de repetir o código inteiro.&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g1 &amp;lt;- ggplot(data=diamonds,aes(x=1,y=price))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;No exemplo acima, indicamos que a variável &lt;em&gt;price&lt;/em&gt; deve ser atribuída ao eixo &lt;em&gt;y&lt;/em&gt;, e o eixo &lt;em&gt;x&lt;/em&gt; recebe o valor 1 apenas para posicionar o gráfico. Além disso o código que acabamos de rodar serve apenas para criar um objeto da classe &lt;strong&gt;ggplot&lt;/strong&gt;, porém ele ainda não produz nenhum gráfico. Ao chamarmos o objeto g1:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Error: No layers in plot&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Isso se deve ao fato de que nenhuma camada de gráfico foi adicionada, ou seja, não especificamos qual o tipo de gráfico desejamos produzir. A maioria das camadas iniciais podem ser criadas usando as funções da família &lt;strong&gt;geom_&lt;/strong&gt;. No primeiro exemplo, vamos criar um boxplot para termos uma ideia de valores mínimos, máximos, média e posição dos quartis.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g1 + geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Note a sintaxe bastante intuitiva que usa o símbolo “+” para adicionar camadas. Isso torna o &lt;em&gt;ggplot2&lt;/em&gt; um pacote bastante prático &lt;del&gt;depois de pegar o jeito&lt;/del&gt; para criar gráficos informativos, bonitos e prontos para publicação.&lt;/p&gt;
-&lt;p&gt;Para criarmos um histograma simples, é igualmente fácil:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(diamonds,aes(x=price)) + geom_histogram()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Observe no entanto que para o histograma a variável de interesse está no eixo &lt;em&gt;x&lt;/em&gt;, já que o eixo &lt;em&gt;y&lt;/em&gt; contém a contagem de valores em cada intervalo.&lt;/p&gt;
-&lt;p&gt;Os gráficos básicos podem não parecer tão bonitos assim à primeira vista; vamos aprender em seções posteriores como modificar a estética dos gráficos (cores, tamanho, bordas, plano de fundo, etc.).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;graficos-bidimensionais-graficos-de-dispersao-modelos-lineares-etc.&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Gráficos bidimensionais (gráficos de dispersão, modelos lineares, etc.)&lt;/h2&gt;
-&lt;div id=&#34;graficos-de-dispersao&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Gráficos de dispersão&lt;/h3&gt;
-&lt;p&gt;Em grande parte dos estudos em ecologia buscamos analisar como duas ou mais variáveis se comportam umas em relação às outras. Para isso, um bom ponto de partida é construir gráficos de dispersão (&lt;em&gt;scatterplots&lt;/em&gt;). No exemplo a seguir construiremos um gráfico de dispersão entre as variáveis &lt;em&gt;carat&lt;/em&gt; e &lt;em&gt;price&lt;/em&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 &amp;lt;- ggplot(diamonds,aes(x=carat,y=price))
-g2 + geom_point()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Note que no exemplo acima, estamos indicando para a função ggplot que as camadas que forem adicionadas de agora em diante devem conter os valores de &lt;em&gt;carat&lt;/em&gt; no eixo &lt;em&gt;x&lt;/em&gt; e de &lt;em&gt;price&lt;/em&gt; no eixo &lt;em&gt;y&lt;/em&gt;. Isso pode ser modificado posteriormente (como nos casos onde você quer por exemplo acrescentar uma outra variável no eixo &lt;em&gt;y&lt;/em&gt;), e será exemplificado mais adiante. No entanto, a maioria (se não todas) das funções da família &lt;strong&gt;geom_&lt;/strong&gt; também possuem os argumentos básicos &lt;em&gt;data&lt;/em&gt; e &lt;em&gt;mapping&lt;/em&gt;. Sendo assim, uma outra forma de criar o mesmo gráfico é:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot() + geom_point(data=diamonds,mapping=aes(x=carat,y=price))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-12-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;Caso a cor padrão &lt;del&gt;seja feia&lt;/del&gt; não seja adequada, podemos indicar para o gráfico qual cor queremos usar para os pontos. Como cor é um dos componentes essenciais da parte estética de um gráfico, essa especificação deve entrar na função &lt;em&gt;aes&lt;/em&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(mapping=aes(colour=&amp;quot;red&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-13-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;Ao analisarmos o conteúdo do objeto &lt;strong&gt;diamonds&lt;/strong&gt; notamos que os valores de &lt;em&gt;carat&lt;/em&gt; e &lt;em&gt;price&lt;/em&gt; são divididos por classe de &lt;em&gt;cut&lt;/em&gt;, &lt;em&gt;color&lt;/em&gt; e &lt;em&gt;clarity&lt;/em&gt;. Assim, podemos por exemplo representar o mesmo conjunto de dados separados por classe de &lt;em&gt;clarity&lt;/em&gt; por exemplo. Se seu objeto contendo os dados estiver mal organizado, você levaria um tempo razoável para adicionar uma cada para cada classe cada uma com uma cor diferente. Porém, como já aprendemos a organizar nossos dados de maneira idea, podemos facilmente usar a variável &lt;em&gt;clarity&lt;/em&gt; para atribuir diferentes cores que representarão cada uma das classes da seguinte forma:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(mapping=aes(colour=clarity))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-14-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;Essa separação em classes de &lt;em&gt;clarity&lt;/em&gt; pode ser feita em outros tipos de gráfico também (os &lt;em&gt;outliers&lt;/em&gt; foram removidos para fins de visualização):&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data=diamonds,
-       aes(x=clarity, y=price, group=interaction(clarity,cut), color=clarity)) +
-           geom_boxplot(outlier.shape=NA)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-15-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;adicionando-linhas-de-tendencia&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Adicionando linhas de tendência&lt;/h3&gt;
-&lt;p&gt;Os gráficos de dispersão que construímos até agora indicam que existe uma relação positiva entre quilates e preço. Nesse caso, podemos ajustar um modelo linear que indique como se dá essa correlação. Para isso, o pacote &lt;em&gt;ggplot2&lt;/em&gt; possui funções específicas para algumas estatísticas comumente usadas. Aqui, usaremos a função &lt;strong&gt;stat_smooth&lt;/strong&gt; para isso.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + geom_smooth(method = &amp;quot;lm&amp;quot;, se=FALSE, aes(color=&amp;quot;red&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-16-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;p&gt;A linha de regressão adicionada no gráfico anterior corresponde à correlação entre &lt;em&gt;carat&lt;/em&gt; e &lt;em&gt;price&lt;/em&gt; indepentende da classe de &lt;em&gt;clarity&lt;/em&gt;. Porém, dependendo do caso pode ser mais interessante criar uma reta de correlação para cada classe de &lt;em&gt;clarity&lt;/em&gt;. Fazemos isso da seguinte forma (adicionando também intervalos de confiança da média):&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 &amp;lt;- g2 + geom_point(aes(color=clarity)) + geom_smooth(method = &amp;quot;lm&amp;quot;, se=TRUE, aes(color=clarity))
-g3&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-17-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;personalizando-os-graficos&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Personalizando os gráficos&lt;/h1&gt;
-&lt;div id=&#34;alterar-rotulos-dos-eixos&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Alterar rótulos dos eixos&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlab(&amp;quot;Quilates&amp;quot;) + ylab(&amp;quot;Preco&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-18-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;alterar-limites-dos-eixos&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Alterar limites dos eixos&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-19-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;alterar-tamanho-e-direcao-das-fontes-dos-eixos&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Alterar tamanho e direção das fontes dos eixos&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + theme(axis.text.x = element_text(angle=45,vjust=1,size=30))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-20-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;inserir-anotacoes&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Inserir anotações&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + annotate(&amp;quot;text&amp;quot;,x=9.5,y=30000,label= &amp;quot;Painel a&amp;quot;,color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-21-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) +
-    annotate(&amp;quot;rect&amp;quot;,xmin=3, xmax=4, ymin=10000,
-             ymax=20000, alpha=.2, color=&amp;quot;blue&amp;quot;,fill=&amp;quot;green&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-22-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) +
-    annotate(&amp;quot;segment&amp;quot;, x=3, xend=4, y=30000, yend=20000,
-             color=&amp;quot;orange&amp;quot;, arrow=arrow(length=unit(1,&amp;quot;cm&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-23-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;alterar-paleta-de-cores&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Alterar paleta de cores&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + scale_color_brewer(type=&amp;quot;seq&amp;quot;,palette=&amp;quot;Set3&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-24-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;separar-graficos-em-paineis&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Separar gráficos em painéis&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + facet_grid(. ~ cut)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-25-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + facet_grid(cut ~ .)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-26-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + facet_grid(cut ~ clarity)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-27-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;alterar-posicao-titulo-e-tamanho-da-legenda&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Alterar posição, título e tamanho da legenda&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-28-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = &amp;quot;bottom&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-29-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = &amp;quot;bottom&amp;quot;, legend.title = element_blank())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-30-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = c(.8,.8))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-31-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = c(.8,.2))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-32-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;alterar-temas&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Alterar temas&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-28-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-33-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + theme(panel.grid.major = element_line(colour = &amp;quot;red&amp;quot;, linetype = &amp;quot;dotted&amp;quot;), panel.background = element_rect(fill = &amp;quot;green&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;%7B%7B%20site.baseurl%20%7D%7D/assets/ggplot2-tutorial-figs/unnamed-chunk-34-1.png&#34; /&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;principais-tipos-de-grafico&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Principais tipos de gráfico&lt;/h1&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th align=&#34;left&#34;&gt;Tipo de gráfico&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Função&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Histograma&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_histogram&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Densidade&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_density&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Boxplot&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_boxplot&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Barras&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_bar&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Polígonos&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_polygon&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Abline&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_abline&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td align=&#34;left&#34;&gt;Texto&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_text&lt;/strong&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;div id=&#34;documentacao-online&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Documentação online&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;http://docs.ggplot2.org/current/&#34;&gt;Documentação oficial do &lt;em&gt;ggplot2&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.cookbook-r.com/Graphs/&#34;&gt;R Cookbook - Graphs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/tagged/ggplot2&#34;&gt;stack&lt;strong&gt;overflow&lt;/strong&gt; - &lt;em&gt;ggplot2&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Tutorial de SSH</title>
       <link>/tutorial-de-ssh/</link>
-      <pubDate>Tue, 28 Jul 2015 00:00:00 -0300</pubDate>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
       
       <guid>/tutorial-de-ssh/</guid>
       <description>
@@ -592,6 +255,251 @@ $ ssh usuario@servidor-linux
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;onde &lt;strong&gt;-r&lt;/strong&gt; indica que a cópia deve ser recursiva, ou seja, que arquivos localizados em subpastas também devem ser copiados, e &lt;strong&gt;-v&lt;/strong&gt; indica &lt;em&gt;verbose&lt;/em&gt;, ou seja, ele imprime na tela a lista dos arquivos à medida em que são copiados.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tutorial de ggplot2</title>
+      <link>/tutorial-de-ggplot2/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tutorial-de-ggplot2/</guid>
+      <description>&lt;p&gt;O pacote &lt;em&gt;ggplot2&lt;/em&gt; foi desenvolvido pelo Dr. Hadley Wickham (que desenvolveu diversos outros pacotes importantes para &lt;strong&gt;R&lt;/strong&gt; como o &lt;em&gt;(d)plyr&lt;/em&gt; por exemplo. Este pacote implementa uma nova maneira de criar gráficos a partir dos dados, trazendo o conceito de camadas (&lt;em&gt;layers&lt;/em&gt;) para a sintaxe do &lt;strong&gt;R&lt;/strong&gt;. Com esse novo conceito, surge também a necessidade de se organizar os dados de uma maneira que facilite a utilização da nova sintaxe. Para isso, os outros pacotes (como os já mencionados &lt;em&gt;(d)plyr&lt;/em&gt;) foram desenvolvidos pelo Dr. Wickham de maneira a tornar a manipulação de dados mais ágil, intuitiva e já adequada para o uso conjunto com &lt;em&gt;ggplot2&lt;/em&gt;.&lt;/p&gt;
+&lt;div id=&#34;instalacao&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Instalação&lt;/h2&gt;
+&lt;p&gt;O pacote deve ser instalado como qualquer outro pacote no &lt;strong&gt;R&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;ggplot2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;É possível também instalar as versões mais recentes do pacote (mas que podem apresentar instabilidades ou serem incompletas) através da função &lt;em&gt;install_github&lt;/em&gt; do pacote &lt;strong&gt;devtools&lt;/strong&gt;. Este tipo de instalação usa os arquivos disponíveis no repositório público do &lt;em&gt;ggplot2&lt;/em&gt; no github.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;devtools&amp;quot;)
+library(devtools)
+install_github(&amp;quot;hadley/ggplot2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Após a instalação, carregue o pacote para utilização.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;como-organizar-os-dados-para-o-ggplot2&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Como organizar os dados para o &lt;em&gt;ggplot2&lt;/em&gt;&lt;/h1&gt;
+&lt;p&gt;É bastante comum usuários enfrentarem problemas nas primeiras vezes que usam o &lt;em&gt;ggplot2&lt;/em&gt; pois ao organizarem os dados para serem importados no &lt;strong&gt;R&lt;/strong&gt;, procuram o fazer da maneira mais sintética possivel, agrupando variáveis por exemplo. A tabela a seguir é um exemplo de como &lt;strong&gt;NÃO&lt;/strong&gt; se deve organizar os dados para serem usados com o &lt;em&gt;ggplot2&lt;/em&gt; (&lt;del&gt;para nenhuma situação na verdade&lt;/del&gt;).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##            Tratamento     Valor
+## 1   Tratamento A - 2h 10.821762
+## 2   Tratamento A - 4h 10.306185
+## 3   Tratamento A - 8h 10.608959
+## 4  Tratamento A - 16h  9.023300
+## 5  Tratamento A - 24h  9.098674
+## 6   Tratamento B - 2h 10.875956
+## 7   Tratamento B - 4h  9.560360
+## 8   Tratamento B - 8h 10.117291
+## 9  Tratamento B - 16h 10.575051
+## 10 Tratamento B - 24h 10.787699&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Os objetos de entrada nas funções do &lt;em&gt;ggplot2&lt;/em&gt; são da classe &lt;em&gt;data.frame&lt;/em&gt;. No entanto, organizar o &lt;em&gt;data.frame&lt;/em&gt; de maneira a otimizar o trabalho poupa bastante tempo &lt;del&gt;e dor de cabeça&lt;/del&gt;. O &lt;em&gt;data.frame&lt;/em&gt; a ser usado em um trabalho deve idealmente conter cada uma das variáveis em colunas separadas, e cada observação em linhas separadas. Assim, o exemplo anterior deveria ser idealmente organizado da seguinte forma:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##        Valor Tempo   Tratamento
+## 1  10.821762     2 Tratamento A
+## 2  10.306185     4 Tratamento A
+## 3  10.608959     8 Tratamento A
+## 4   9.023300    16 Tratamento A
+## 5   9.098674    24 Tratamento A
+## 6  10.875956     2 Tratamento B
+## 7   9.560360     4 Tratamento B
+## 8  10.117291     8 Tratamento B
+## 9  10.575051    16 Tratamento B
+## 10 10.787699    24 Tratamento B&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Alguns pacotes foram desenvolvidos com o propósito de facilitar a organização dos dados de maneira limpa e otimizada. Dentre esses pacotes, encontram-se &lt;em&gt;(d)plyr&lt;/em&gt;, &lt;em&gt;tidyr&lt;/em&gt;, &lt;em&gt;magrittr&lt;/em&gt; dentre outros. Para mais informações sobre como (e porquê) organizar seus dados dessa forma, leia &lt;a href=&#34;http://www.jstatsoft.org/v59/i10/paper&#34;&gt;este artigo do Dr. Wickham&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;estrutura-basica-de-um-grafico&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Estrutura básica de um gráfico&lt;/h1&gt;
+&lt;p&gt;Como dito na introdução, um gráfico feito no &lt;em&gt;ggplot2&lt;/em&gt; consiste de diversas camadas que são adicionadas a uma estrutura básica. Essa estrutura básica é criada usando as funções &lt;em&gt;ggplot&lt;/em&gt; ou &lt;em&gt;qplot&lt;/em&gt;. Essas funções possuem dois componentes essenciais: &lt;em&gt;data&lt;/em&gt;, que como o nome diz recebe o &lt;em&gt;data.frame&lt;/em&gt; a ser utilizado para a construção do gráfico, e &lt;em&gt;mapping&lt;/em&gt;, que é o argumento que controla a estética do gráfico, ou seja, que controla quais variáveis serão plotadas nos eixos &lt;em&gt;x&lt;/em&gt; e &lt;em&gt;y&lt;/em&gt;, dentre outros detalhes que serão abordados posteriormente. Para o mapeamento dos dados, usaremos a função &lt;em&gt;aes&lt;/em&gt;, na qual indicaremos qual variável deve ser posicionada em cada eixo, além de outros argumentos relativos a cor, tamanho, etc.&lt;/p&gt;
+&lt;p&gt;Diogo Melo, do Laboratório de Evolução de Mamíferos do IB-USP sintetizou uma regra geral para gráficos no &lt;em&gt;ggplot2&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data_frame_entrada, aes(x = coluna_eixo_x,
+                               y = coluna_eixo_y,
+                               group = coluna_agrupadora,
+                               color = coluna_das_cores))
++ geom_tipo_do_grafico(opções que não dependem dos dados,
+                       aes(opções que dependem))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Para exemplificar a construção de um gráfico, usaremos o conjunto de dados do próprio pacote &lt;em&gt;ggplot2&lt;/em&gt; chamado &lt;strong&gt;diamonds&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data(diamonds)
+head(diamonds)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 10
+##   carat       cut color clarity depth table price     x     y     z
+##   &amp;lt;dbl&amp;gt;     &amp;lt;ord&amp;gt; &amp;lt;ord&amp;gt;   &amp;lt;ord&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt;
+## 1  0.23     Ideal     E     SI2  61.5    55   326  3.95  3.98  2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326  3.89  3.84  2.31
+## 3  0.23      Good     E     VS1  56.9    65   327  4.05  4.07  2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334  4.20  4.23  2.63
+## 5  0.31      Good     J     SI2  63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336  3.94  3.96  2.48&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;graficos-unidimensionais-boxplots-e-histogramas&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Gráficos unidimensionais (boxplots e histogramas)&lt;/h2&gt;
+&lt;p&gt;Um bom modo de iniciar qualquer análise é fazendo uma análise exploratória dos dados. Para isso, alguns tipos específicos de gráficos como &lt;em&gt;boxplots&lt;/em&gt; ou histogramas são maneiras simples de visualizar a estrutura básica dos dados. Estes tipos de gráfico são ditos unidimensionais, pois representam apenas uma variável. Neste tópico, veremos como criar esses dois gráficos de maneira simples (complementos serão adicionados mais para frente no tutorial).&lt;/p&gt;
+&lt;p&gt;O primeiro passo para criarmos um gráfico é então gerar o objeto da classe &lt;strong&gt;ggplot&lt;/strong&gt;. &lt;strong&gt;DICA: armazene as camadas básicas do seu gráfico em um objeto, pois isso facilita a adição de novas camadas sem a necessidade de repetir o código inteiro.&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g1 &amp;lt;- ggplot(data=diamonds,aes(x=1,y=price))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;No exemplo acima, indicamos que a variável &lt;em&gt;price&lt;/em&gt; deve ser atribuída ao eixo &lt;em&gt;y&lt;/em&gt;, e o eixo &lt;em&gt;x&lt;/em&gt; recebe o valor 1 apenas para posicionar o gráfico. Além disso o código que acabamos de rodar serve apenas para criar um objeto da classe &lt;strong&gt;ggplot&lt;/strong&gt;, porém ele ainda não produz nenhum gráfico. Ao chamarmos o objeto g1:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Error: No layers in plot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Isso se deve ao fato de que nenhuma camada de gráfico foi adicionada, ou seja, não especificamos qual o tipo de gráfico desejamos produzir. A maioria das camadas iniciais podem ser criadas usando as funções da família &lt;strong&gt;geom_&lt;/strong&gt;. No primeiro exemplo, vamos criar um boxplot para termos uma ideia de valores mínimos, máximos, média e posição dos quartis.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g1 + geom_boxplot()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Note a sintaxe bastante intuitiva que usa o símbolo “+” para adicionar camadas. Isso torna o &lt;em&gt;ggplot2&lt;/em&gt; um pacote bastante prático &lt;del&gt;depois de pegar o jeito&lt;/del&gt; para criar gráficos informativos, bonitos e prontos para publicação.&lt;/p&gt;
+&lt;p&gt;Para criarmos um histograma simples, é igualmente fácil:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(diamonds,aes(x=price)) + geom_histogram()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Observe no entanto que para o histograma a variável de interesse está no eixo &lt;em&gt;x&lt;/em&gt;, já que o eixo &lt;em&gt;y&lt;/em&gt; contém a contagem de valores em cada intervalo.&lt;/p&gt;
+&lt;p&gt;Os gráficos básicos podem não parecer tão bonitos assim à primeira vista; vamos aprender em seções posteriores como modificar a estética dos gráficos (cores, tamanho, bordas, plano de fundo, etc.).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;graficos-bidimensionais-graficos-de-dispersao-modelos-lineares-etc.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Gráficos bidimensionais (gráficos de dispersão, modelos lineares, etc.)&lt;/h2&gt;
+&lt;div id=&#34;graficos-de-dispersao&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Gráficos de dispersão&lt;/h3&gt;
+&lt;p&gt;Em grande parte dos estudos em ecologia buscamos analisar como duas ou mais variáveis se comportam umas em relação às outras. Para isso, um bom ponto de partida é construir gráficos de dispersão (&lt;em&gt;scatterplots&lt;/em&gt;). No exemplo a seguir construiremos um gráfico de dispersão entre as variáveis &lt;em&gt;carat&lt;/em&gt; e &lt;em&gt;price&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 &amp;lt;- ggplot(diamonds,aes(x=carat,y=price))
+g2 + geom_point()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Note que no exemplo acima, estamos indicando para a função ggplot que as camadas que forem adicionadas de agora em diante devem conter os valores de &lt;em&gt;carat&lt;/em&gt; no eixo &lt;em&gt;x&lt;/em&gt; e de &lt;em&gt;price&lt;/em&gt; no eixo &lt;em&gt;y&lt;/em&gt;. Isso pode ser modificado posteriormente (como nos casos onde você quer por exemplo acrescentar uma outra variável no eixo &lt;em&gt;y&lt;/em&gt;), e será exemplificado mais adiante. No entanto, a maioria (se não todas) das funções da família &lt;strong&gt;geom_&lt;/strong&gt; também possuem os argumentos básicos &lt;em&gt;data&lt;/em&gt; e &lt;em&gt;mapping&lt;/em&gt;. Sendo assim, uma outra forma de criar o mesmo gráfico é:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot() + geom_point(data=diamonds,mapping=aes(x=carat,y=price))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Caso a cor padrão &lt;del&gt;seja feia&lt;/del&gt; não seja adequada, podemos indicar para o gráfico qual cor queremos usar para os pontos. Como cor é um dos componentes essenciais da parte estética de um gráfico, essa especificação deve entrar na função &lt;em&gt;aes&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(mapping=aes(colour=&amp;quot;red&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Ao analisarmos o conteúdo do objeto &lt;strong&gt;diamonds&lt;/strong&gt; notamos que os valores de &lt;em&gt;carat&lt;/em&gt; e &lt;em&gt;price&lt;/em&gt; são divididos por classe de &lt;em&gt;cut&lt;/em&gt;, &lt;em&gt;color&lt;/em&gt; e &lt;em&gt;clarity&lt;/em&gt;. Assim, podemos por exemplo representar o mesmo conjunto de dados separados por classe de &lt;em&gt;clarity&lt;/em&gt; por exemplo. Se seu objeto contendo os dados estiver mal organizado, você levaria um tempo razoável para adicionar uma cada para cada classe cada uma com uma cor diferente. Porém, como já aprendemos a organizar nossos dados de maneira idea, podemos facilmente usar a variável &lt;em&gt;clarity&lt;/em&gt; para atribuir diferentes cores que representarão cada uma das classes da seguinte forma:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(mapping=aes(colour=clarity))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Essa separação em classes de &lt;em&gt;clarity&lt;/em&gt; pode ser feita em outros tipos de gráfico também (os &lt;em&gt;outliers&lt;/em&gt; foram removidos para fins de visualização):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data=diamonds,
+       aes(x=clarity, y=price, group=interaction(clarity,cut), color=clarity)) +
+           geom_boxplot(outlier.shape=NA)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;adicionando-linhas-de-tendencia&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Adicionando linhas de tendência&lt;/h3&gt;
+&lt;p&gt;Os gráficos de dispersão que construímos até agora indicam que existe uma relação positiva entre quilates e preço. Nesse caso, podemos ajustar um modelo linear que indique como se dá essa correlação. Para isso, o pacote &lt;em&gt;ggplot2&lt;/em&gt; possui funções específicas para algumas estatísticas comumente usadas. Aqui, usaremos a função &lt;strong&gt;stat_smooth&lt;/strong&gt; para isso.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + geom_smooth(method = &amp;quot;lm&amp;quot;, se=FALSE, aes(color=&amp;quot;red&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;A linha de regressão adicionada no gráfico anterior corresponde à correlação entre &lt;em&gt;carat&lt;/em&gt; e &lt;em&gt;price&lt;/em&gt; indepentende da classe de &lt;em&gt;clarity&lt;/em&gt;. Porém, dependendo do caso pode ser mais interessante criar uma reta de correlação para cada classe de &lt;em&gt;clarity&lt;/em&gt;. Fazemos isso da seguinte forma (adicionando também intervalos de confiança da média):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 &amp;lt;- g2 + geom_point(aes(color=clarity)) + geom_smooth(method = &amp;quot;lm&amp;quot;, se=TRUE, aes(color=clarity))
+g3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;personalizando-os-graficos&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Personalizando os gráficos&lt;/h1&gt;
+&lt;div id=&#34;alterar-rotulos-dos-eixos&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alterar rótulos dos eixos&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlab(&amp;quot;Quilates&amp;quot;) + ylab(&amp;quot;Preco&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alterar-limites-dos-eixos&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alterar limites dos eixos&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alterar-tamanho-e-direcao-das-fontes-dos-eixos&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alterar tamanho e direção das fontes dos eixos&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + theme(axis.text.x = element_text(angle=45,vjust=1,size=30))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;inserir-anotacoes&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Inserir anotações&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + annotate(&amp;quot;text&amp;quot;,x=9.5,y=30000,label= &amp;quot;Painel a&amp;quot;,color=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) +
+    annotate(&amp;quot;rect&amp;quot;,xmin=3, xmax=4, ymin=10000,
+             ymax=20000, alpha=.2, color=&amp;quot;blue&amp;quot;,fill=&amp;quot;green&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) +
+    annotate(&amp;quot;segment&amp;quot;, x=3, xend=4, y=30000, yend=20000,
+             color=&amp;quot;orange&amp;quot;, arrow=arrow(length=unit(1,&amp;quot;cm&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alterar-paleta-de-cores&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alterar paleta de cores&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + scale_color_brewer(type=&amp;quot;seq&amp;quot;,palette=&amp;quot;Set3&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;separar-graficos-em-paineis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Separar gráficos em painéis&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + facet_grid(. ~ cut)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + facet_grid(cut ~ .)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-21-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g2 + geom_point(aes(color=clarity)) + facet_grid(cut ~ clarity)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-22-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alterar-posicao-titulo-e-tamanho-da-legenda&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alterar posição, título e tamanho da legenda&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-23-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = &amp;quot;bottom&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = &amp;quot;bottom&amp;quot;, legend.title = element_blank())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-25-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = c(.8,.8))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-26-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + xlim(0,10) + ylim(0,30000) + theme(legend.position = c(.8,.2))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Removed 25 rows containing missing values (geom_smooth).&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-27-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;alterar-temas&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Alterar temas&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + theme_bw()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-28-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;g3 + theme(panel.grid.major = element_line(colour = &amp;quot;red&amp;quot;, linetype = &amp;quot;dotted&amp;quot;), panel.background = element_rect(fill = &amp;quot;green&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2015-07-28-ggplot2-tutorial_files/figure-html/unnamed-chunk-29-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;principais-tipos-de-grafico&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Principais tipos de gráfico&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Tipo de gráfico&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Função&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Histograma&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_histogram&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Densidade&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_density&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Boxplot&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_boxplot&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Barras&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_bar&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Polígonos&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_polygon&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Abline&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_abline&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Texto&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;geom_text&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;documentacao-online&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Documentação online&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;http://docs.ggplot2.org/current/&#34;&gt;Documentação oficial do &lt;em&gt;ggplot2&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.cookbook-r.com/Graphs/&#34;&gt;R Cookbook - Graphs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/tagged/ggplot2&#34;&gt;stack&lt;strong&gt;overflow&lt;/strong&gt; - &lt;em&gt;ggplot2&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

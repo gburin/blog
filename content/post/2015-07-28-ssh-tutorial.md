@@ -1,10 +1,11 @@
-+++
-date = 2015-07-28
-draft = false
-tags = ["tutorial", "ssh", "portuguese"]
-title = "Tutorial de SSH"
-math = false
-+++
+---
+title:      "Tutorial de SSH"
+date:       2015-07-28 14:05:19
+summary:    Tutorial básico de SSH para acessar servidores remotos
+categories: ["tutorial"]
+tags:       ["portuguese", "tutorial", "ssh", "server"]
+comments:   true
+---
 
 SSH é a sigla para 'Secure SHell', e é basicamente um protocolo de rede que permite computadores se conectarem via rede de forma a permitir que um computador execute comandos em unidades remotas de maneira segura (criptografada). Essa segurança é garantida por uma chave de segurança que é armazenada tanto em no computador local quanto na máquina remota. Além disso, na maioria das vezes esse acesso é somente autorizado através de senhas de acesso.
 

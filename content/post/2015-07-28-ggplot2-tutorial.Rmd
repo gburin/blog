@@ -2,8 +2,8 @@
 title:      "Tutorial de ggplot2"
 date:       2015-07-28 14:05:19
 summary:    Tutorial básico de uso do pacote ggplot2 (ainda em desenvolvimento)
-categories: ["R"]
-tags:       ["portuguese", "tutorial", "ggplot2", "graphs", "visualization"]
+categories: ["tutorial"]
+tags:       ["portuguese", "tutorial", "ggplot2", "graphs", "visualization", "R"]
 comments:   true
 ---
 
