@@ -5,6 +5,24 @@
     
     <url>
     
+      <loc>/my-defense-presentation/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/my-talk--evolution-meeting-2017/</loc>
+      <lastmod>2017-06-23T14:05:19+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/talk/example-talk/</loc>
       <lastmod>2017-01-01T00:00:00-02:00</lastmod>
     </url>
@@ -43,6 +61,24 @@
     
       <loc>/talk/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/my-first-paper-is-available/</loc>
+      <lastmod>2016-05-24T14:05:19+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/my-first-paper-is-available/</loc>
+      <lastmod>2016-05-24T14:05:19+00:00</lastmod>
     </url>
     
   
@@ -105,6 +141,16 @@
     
     <url>
     
+      <loc>/tags/birds/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/categories/</loc>
       <priority>0</priority>
     </url>
@@ -126,6 +172,56 @@
     
       <loc>/tags/demo/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/dissertation/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/diversification/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/diversitree/</loc>
+      <lastmod>2016-05-24T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/english/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/evolution/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -156,6 +252,46 @@
     
       <loc>/</loc>
       <lastmod>2017-10-14T23:00:00-03:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/interaction-networks/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/nature-communications/</loc>
+      <lastmod>2016-05-24T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/paper/</loc>
+      <lastmod>2016-05-24T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/paper/</loc>
+      <lastmod>2016-05-24T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -195,7 +331,7 @@
     <url>
     
       <loc>/tags/r/</loc>
-      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -234,8 +370,18 @@
     
     <url>
     
-      <loc>/categories/tutorial/</loc>
-      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
+      <loc>/tags/talk/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/talk/</loc>
+      <lastmod>2017-09-28T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -245,6 +391,16 @@
     <url>
     
       <loc>/tags/tutorial/</loc>
+      <lastmod>2015-07-28T14:05:19+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/tutorial/</loc>
       <lastmod>2015-07-28T14:05:19+00:00</lastmod>
       <priority>0</priority>
     </url>
