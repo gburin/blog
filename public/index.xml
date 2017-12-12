@@ -11,6 +11,31 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Our new paper is out!</title>
+      <link>/our-new-paper-is-out/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 -0200</pubDate>
+      
+      <guid>/our-new-paper-is-out/</guid>
+      <description>&lt;p&gt;The new paper from our lab is out! In this study, Dr. Laura Alencar explores if the evolution of arboreality in vipers
+affects species and morphological diversification regimes. We found out that although arboreal vipers
+evolve under a more constrained morphological trajectories compared to terrestrial vipers,
+speciation rates remain similar. This study was part of her PhD thesis, and was featured
+in the cover of Proceedings B with a beautiful image by one of the authors, Marcio Martins.&lt;/p&gt;
+
+&lt;p&gt;You can find the paper in &lt;a href=&#34;http://dx.doi.org/10.1098/rspb.2017.1775&#34; target=&#34;_blank&#34;&gt;this link&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Arboreality constrains morphological evolution but not species diversification in vipers</title>
+      <link>/publication/vipers_procb/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/vipers_procb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>My defense presentation</title>
       <link>/my-defense-presentation/</link>
       <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
