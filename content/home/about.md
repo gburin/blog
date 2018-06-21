@@ -2,7 +2,7 @@
 # About/Biography widget.
 widget = "about"
 active = true
-date = "2016-04-20T00:00:00"
+date = "2018-06-21"
 
 # Order that this section will appear in.
 weight = 5
@@ -19,7 +19,7 @@ weight = 5
 [[education.courses]]
   course = "Postdoctoral Fellow in Ecology"
   institution = "Universidade de São Paulo"
-  year = 2018-ongoing
+  year = 2018
   
 [[education.courses]]
   course = "PhD in Ecology"
