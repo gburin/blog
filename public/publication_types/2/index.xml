@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2 on Gustavo Burin</title>
+    <link>/publication_types/2/</link>
+    <description>Recent content in 2 on Gustavo Burin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Gustavo Burin</copyright>
+    <lastBuildDate>Wed, 09 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How Well Can We Estimate Diversity Dynamics for Clades in Diversity Decline?</title>
+      <link>/publication/sysbio_2018/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/sysbio_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arboreality constrains morphological evolution but not species diversification in vipers</title>
+      <link>/publication/vipers_procb/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/vipers_procb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Omnivory in birds is a macroevolutionary sink</title>
+      <link>/publication/first_paper/</link>
+      <pubDate>Sat, 09 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/first_paper/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

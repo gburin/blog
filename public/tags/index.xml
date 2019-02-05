@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Gustavo Burin</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Gustavo Burin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Gustavo Burin</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Content tagged as &#39;Academic&#39;</title>
+      <link>/tags/academic/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/academic/</guid>
+      <description>Here is a list of all the content that has been tagged as academic.</description>
+    </item>
+    
+    <item>
+      <title>Arboreal</title>
+      <link>/tags/arboreal/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 -0200</pubDate>
+      
+      <guid>/tags/arboreal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BAMM</title>
+      <link>/tags/bamm/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 -0300</pubDate>
+      
+      <guid>/tags/bamm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Birds</title>
+      <link>/tags/birds/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/birds/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Decline</title>
+      <link>/tags/decline/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 -0300</pubDate>
+      
+      <guid>/tags/decline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep-learning</title>
+      <link>/tags/deep-learning/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Demo</title>
+      <link>/tags/demo/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dissertation</title>
+      <link>/tags/dissertation/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/dissertation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Diversification</title>
+      <link>/tags/diversification/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/diversification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Diversitree</title>
+      <link>/tags/diversitree/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 -0200</pubDate>
+      
+      <guid>/tags/diversitree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>English</title>
+      <link>/tags/english/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/english/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Evolution</title>
+      <link>/tags/evolution/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/evolution/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ggplot2</title>
+      <link>/tags/ggplot2/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/ggplot2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graphs</title>
+      <link>/tags/graphs/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/graphs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interaction networks</title>
+      <link>/tags/interaction-networks/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/interaction-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nature Communications</title>
+      <link>/tags/nature-communications/</link>
+      <pubDate>Tue, 24 May 2016 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/nature-communications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OUwie</title>
+      <link>/tags/ouwie/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 -0200</pubDate>
+      
+      <guid>/tags/ouwie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paper</title>
+      <link>/tags/paper/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 -0300</pubDate>
+      
+      <guid>/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Portuguese</title>
+      <link>/tags/portuguese/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/portuguese/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RPANDA</title>
+      <link>/tags/rpanda/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 -0300</pubDate>
+      
+      <guid>/tags/rpanda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Server</title>
+      <link>/tags/server/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Simulations</title>
+      <link>/tags/simulations/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 -0300</pubDate>
+      
+      <guid>/tags/simulations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ssh</title>
+      <link>/tags/ssh/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Systematic Biology</title>
+      <link>/tags/systematic-biology/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 -0300</pubDate>
+      
+      <guid>/tags/systematic-biology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Talk</title>
+      <link>/tags/talk/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/talk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terrestrial</title>
+      <link>/tags/terrestrial/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 -0200</pubDate>
+      
+      <guid>/tags/terrestrial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>/tags/tutorial/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vipers</title>
+      <link>/tags/vipers/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 -0200</pubDate>
+      
+      <guid>/tags/vipers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visualization</title>
+      <link>/tags/visualization/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tags/visualization/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -8,7 +8,18 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Gustavo Burin</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/publication/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How Well Can We Estimate Diversity Dynamics for Clades in Diversity Decline?</title>
+      <link>/publication/sysbio_2018/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/sysbio_2018/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Arboreality constrains morphological evolution but not species diversification in vipers</title>

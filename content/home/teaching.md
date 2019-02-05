@@ -3,8 +3,8 @@
 # An example of using the custom widget to create your own homepage section.
 # To create more sections, duplicate this file and edit the values below as desired.
 widget = "custom"
-active = false
-date = "2016-04-20T00:00:00"
+active = true
+date = "2019-02-05T00:00:00"
 
 # Note: a full width section format can be enabled by commenting out the `title` and `subtitle` with a `#`.
 title = "Teaching"
@@ -15,14 +15,8 @@ weight = 60
 
 +++
 
-This is an example of using the *custom* widget to create your own homepage section.
+I teach the following grad-level courses at Universidade de São Paulo:
 
-I am a teaching instructor for the following courses at University X:
+- BIE5751: Macroevolução - Teoria e Aplicação (with Tiago Quental and Laura Alencar)
 
-- CS101: An intro to computer science
-- CS102: An intro to computer science
-- CS103: An intro to computer science
-- CS104: An intro to computer science
-- CS105: An intro to computer science
-- CS106: An intro to computer science
-- CS107: An intro to computer science
+The tutorials that we used during the course are avaliable <a href="https://resources.gburin.com" target="_blank">here (in portuguese)</a>. I will upload the slides from the classes soon.

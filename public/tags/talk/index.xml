@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talk on Gustavo Burin</title>
+    <link>/tags/talk/</link>
+    <description>Recent content in Talk on Gustavo Burin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Gustavo Burin</copyright>
+    <lastBuildDate>Thu, 28 Sep 2017 14:05:19 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/talk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My defense presentation</title>
+      <link>/my-defense-presentation/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/my-defense-presentation/</guid>
+      <description>I defended my dissertation on October 2nd, and here are the slides from my talk</description>
+    </item>
+    
+    <item>
+      <title>My talk @ Evolution Meeting, 2017</title>
+      <link>/my-talk--evolution-meeting-2017/</link>
+      <pubDate>Fri, 23 Jun 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/my-talk--evolution-meeting-2017/</guid>
+      <description>I just found out (almost by accident) that the filming of my talk at the Macroevolution I session during the Evolution meeting last June in Portland, OR, is online (click here or on the image to watch it on youtube).
+Please, feel free to leave any feedback! Any suggestion will be greatly appreciated!</description>
+    </item>
+    
+  </channel>
+</rss>

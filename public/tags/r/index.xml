@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Gustavo Burin</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Gustavo Burin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Gustavo Burin</copyright>
+    <lastBuildDate>Thu, 28 Sep 2017 14:05:19 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My defense presentation</title>
+      <link>/my-defense-presentation/</link>
+      <pubDate>Thu, 28 Sep 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/my-defense-presentation/</guid>
+      <description>I defended my dissertation on October 2nd, and here are the slides from my talk</description>
+    </item>
+    
+    <item>
+      <title>My talk @ Evolution Meeting, 2017</title>
+      <link>/my-talk--evolution-meeting-2017/</link>
+      <pubDate>Fri, 23 Jun 2017 14:05:19 +0000</pubDate>
+      
+      <guid>/my-talk--evolution-meeting-2017/</guid>
+      <description>I just found out (almost by accident) that the filming of my talk at the Macroevolution I session during the Evolution meeting last June in Portland, OR, is online (click here or on the image to watch it on youtube).
+Please, feel free to leave any feedback! Any suggestion will be greatly appreciated!</description>
+    </item>
+    
+    <item>
+      <title>My first paper is available</title>
+      <link>/my-first-paper-is-available/</link>
+      <pubDate>Tue, 24 May 2016 14:05:19 +0000</pubDate>
+      
+      <guid>/my-first-paper-is-available/</guid>
+      <description>I just found out (almost by accident) that the filming of my talk at the Macroevolution II session during the Evolution meeting last month in Guarujá, Brazil, is online (click here or on the image to watch it on youtube).
+Please, feel free to leave any feedback! Any suggestion will be greatly appreciated!
+
+If the image quality is not so good, you can see the slides in this link.</description>
+    </item>
+    
+    <item>
+      <title>My first paper is available</title>
+      <link>/my-first-paper-is-available/</link>
+      <pubDate>Tue, 24 May 2016 14:05:19 +0000</pubDate>
+      
+      <guid>/my-first-paper-is-available/</guid>
+      <description>Last month my first paper got published a year after the first submission. In this paper we assess how diet affects the macroevolutionary dynamics of all bird species, and found that omnivores - species that feed on multiple food items - have lower (even negative) net diversification. This pattern arises from either smaller speciation and/or greater extinction when compared to all other dietary guilds.
+Associated with that, there is a prevalence of transitions from all guilds into omnivory.</description>
+    </item>
+    
+    <item>
+      <title>Tutorial de ggplot2</title>
+      <link>/tutorial-de-ggplot2/</link>
+      <pubDate>Tue, 28 Jul 2015 14:05:19 +0000</pubDate>
+      
+      <guid>/tutorial-de-ggplot2/</guid>
+      <description>O pacote ggplot2 foi desenvolvido pelo Dr. Hadley Wickham (que desenvolveu diversos outros pacotes importantes para R como o (d)plyr por exemplo. Este pacote implementa uma nova maneira de criar gráficos a partir dos dados, trazendo o conceito de camadas (layers) para a sintaxe do R. Com esse novo conceito, surge também a necessidade de se organizar os dados de uma maneira que facilite a utilização da nova sintaxe. Para isso, os outros pacotes (como os já mencionados (d)plyr) foram desenvolvidos pelo Dr.</description>
+    </item>
+    
+  </channel>
+</rss>

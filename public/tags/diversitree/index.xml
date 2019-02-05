@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diversitree on Gustavo Burin</title>
+    <link>/tags/diversitree/</link>
+    <description>Recent content in Diversitree on Gustavo Burin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Gustavo Burin</copyright>
+    <lastBuildDate>Wed, 13 Dec 2017 00:00:00 -0200</lastBuildDate>
+    
+	<atom:link href="/tags/diversitree/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Our new paper is out!</title>
+      <link>/our-new-paper-is-out/</link>
+      <pubDate>Wed, 13 Dec 2017 00:00:00 -0200</pubDate>
+      
+      <guid>/our-new-paper-is-out/</guid>
+      <description>The new paper from our lab is out! In this study, Dr. Laura Alencar explores if the evolution of arboreality in vipers affects species and morphological diversification regimes. We found out that although arboreal vipers evolve under a more constrained morphological trajectories compared to terrestrial vipers, speciation rates remain similar. This study was part of her PhD thesis, and was featured in the cover of Proceedings B with a beautiful image by one of the authors, Marcio Martins.</description>
+    </item>
+    
+    <item>
+      <title>My first paper is available</title>
+      <link>/my-first-paper-is-available/</link>
+      <pubDate>Tue, 24 May 2016 14:05:19 +0000</pubDate>
+      
+      <guid>/my-first-paper-is-available/</guid>
+      <description>I just found out (almost by accident) that the filming of my talk at the Macroevolution II session during the Evolution meeting last month in Guarujá, Brazil, is online (click here or on the image to watch it on youtube).
+Please, feel free to leave any feedback! Any suggestion will be greatly appreciated!
+
+If the image quality is not so good, you can see the slides in this link.</description>
+    </item>
+    
+    <item>
+      <title>My first paper is available</title>
+      <link>/my-first-paper-is-available/</link>
+      <pubDate>Tue, 24 May 2016 14:05:19 +0000</pubDate>
+      
+      <guid>/my-first-paper-is-available/</guid>
+      <description>Last month my first paper got published a year after the first submission. In this paper we assess how diet affects the macroevolutionary dynamics of all bird species, and found that omnivores - species that feed on multiple food items - have lower (even negative) net diversification. This pattern arises from either smaller speciation and/or greater extinction when compared to all other dietary guilds.
+Associated with that, there is a prevalence of transitions from all guilds into omnivory.</description>
+    </item>
+    
+  </channel>
+</rss>
